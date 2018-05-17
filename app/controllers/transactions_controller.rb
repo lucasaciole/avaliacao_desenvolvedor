@@ -86,6 +86,11 @@ class TransactionsController < ApplicationController
         format.html { redirect_to transactions_url, notice: 'Transactions successfully imported.' }
         format.json { head :accepted }
       end
+    else
+      respond_to do |format|
+        format.html { redirect_to transactions_url, notice: 'Please attach a file to import.' }
+        format.json { head :bad_request }
+      end
     end
   end
 
