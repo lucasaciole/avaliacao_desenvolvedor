@@ -45,4 +45,14 @@ class TransactionsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to transactions_url
   end
+
+  test "should import transactions" do
+    @file = fixture_file_upload('files/sample.txt','text/plain')
+
+    assert_difference('Transaction.count', 4) do
+      post import_transactions_url, params: {file: @file}
+    end
+
+    assert_redirected_to transactions_url
+  end
 end

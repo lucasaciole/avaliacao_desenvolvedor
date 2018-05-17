@@ -16,9 +16,9 @@ class TransactionsTest < ApplicationSystemTestCase
 
     fill_in "Buyer", with: @transaction.buyer
     fill_in "Description", with: @transaction.description
-    fill_in "Provider", with: @transaction.provider_id
     fill_in "Quantity", with: @transaction.quantity
-    fill_in "Unit Price", with: @transaction.unit_price
+    fill_in "Unit_Price", with: @transaction.unit_price
+    select "Provider1"
     click_on "Create Transaction"
 
     assert_text "Transaction was successfully created"
@@ -31,9 +31,9 @@ class TransactionsTest < ApplicationSystemTestCase
 
     fill_in "Buyer", with: @transaction.buyer
     fill_in "Description", with: @transaction.description
-    fill_in "Provider", with: @transaction.provider_id
     fill_in "Quantity", with: @transaction.quantity
-    fill_in "Unit Price", with: @transaction.unit_price
+    fill_in "Unit_Price", with: @transaction.unit_price
+    select "Provider2"
     click_on "Update Transaction"
 
     assert_text "Transaction was successfully updated"
@@ -47,5 +47,17 @@ class TransactionsTest < ApplicationSystemTestCase
     end
 
     assert_text "Transaction was successfully destroyed"
+  end
+
+  test "importing some Transactions" do
+    @file = fixture_file_upload('files/sample.txt','text/plain')
+
+    visit transactions_url
+
+    click_on "Import Transactions", match: :first
+    attach_file 'file', @file.path
+    click_on "Send", match: :first
+
+    assert_text "Transactions successfully imported."
   end
 end
