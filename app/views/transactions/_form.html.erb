@@ -12,8 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :value %>
-    <%= form.text_field :value %>
+    <%= form.label :buyer %>
+    <%= form.text_field :buyer %>
   </div>
 
   <div class="field">
@@ -22,23 +22,17 @@
   </div>
 
   <div class="field">
+    <%= form.label :unit_price %>
+    <%= form.number_field :unit_price %>
+  </div>
+
+  <div class="field">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity %>
+    <%= form.number_field :quantity, min: 1%>
   </div>
 
   <div class="field">
-    <%= form.label :buyer %>
-    <%= form.text_field :buyer %>
-  </div>
-
-  <div class="field">
-    <%= form.label :venue %>
-    <%= form.text_field :venue %>
-  </div>
-
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= select :transaction, :provider_id, options_from_collection_for_select(Provider.all,:id,:name) %>
   </div>
 
   <div class="actions">

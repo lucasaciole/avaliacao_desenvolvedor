@@ -26,7 +26,6 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
-
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
@@ -75,7 +74,7 @@ class TransactionsController < ApplicationController
           t = Transaction.create!  do |t|
             t.buyer        = data[0]
             t.description  = data[1]
-            t.value        = data[2]
+            t.unit_price   = data[2]
             t.quantity     = data[3]
             t.provider     = provider
           end
@@ -96,7 +95,7 @@ class TransactionsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def transaction_param
-      params.require(:transaction).permit(:value, :description, :quantity, :buyer, :venue, :address)
+    def transaction_params
+      params.require(:transaction).permit(:unit_price, :description, :quantity, :buyer, :provider_id)
     end
 end
