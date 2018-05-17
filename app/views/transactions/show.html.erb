@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @transaction.value %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @transaction.description %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @transaction.quantity %>
+</p>
+
+<p>
+  <strong>Buyer:</strong>
+  <%= @transaction.buyer %>
+</p>
+
+<p>
+  <strong>Venue:</strong>
+  <%= @transaction.venue %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @transaction.address %>
+</p>
+
+<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
+<%= link_to 'Back', transactions_path %>
