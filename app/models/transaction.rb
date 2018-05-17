@@ -1,3 +1,3 @@
 class Transaction < ApplicationRecord
-	has_one :provider
+  belongs_to :provider
 end
