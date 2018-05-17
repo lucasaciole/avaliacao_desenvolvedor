@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Value:</strong>
-  <%= @transaction.value %>
+  <strong>Buyer:</strong>
+  <%= @transaction.buyer %>
 </p>
 
 <p>
@@ -11,23 +11,28 @@
 </p>
 
 <p>
+  <strong>Provider:</strong>
+  <%= @transaction.provider.name %>
+</p>
+
+<p>
+  <strong>Provider's Address:</strong>
+  <%= @transaction.provider.address %>
+</p>
+
+<p>
+  <strong>Unit Price:</strong>
+  <%= @transaction.unit_price %>
+</p>
+
+<p>
   <strong>Quantity:</strong>
   <%= @transaction.quantity %>
 </p>
 
 <p>
-  <strong>Buyer:</strong>
-  <%= @transaction.buyer %>
-</p>
-
-<p>
-  <strong>Venue:</strong>
-  <%= @transaction.venue %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @transaction.address %>
+  <strong>Total Value:</strong>
+  <%= @transaction.total_price %>
 </p>
 
 <%= link_to 'Edit', edit_transaction_path(@transaction) %> |
