@@ -28,7 +28,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Boostrap for easy layout
-gem 'bootstrap', '~> 4.1.1'
+gem 'jquery-rails'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
