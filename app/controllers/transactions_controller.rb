@@ -5,6 +5,7 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     @transactions = Transaction.all
+    @total_sum = @transactions.reduce(0) { |sum, t| sum + t.total_price }
   end
 
   # GET /transactions/1

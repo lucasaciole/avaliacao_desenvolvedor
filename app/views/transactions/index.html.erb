@@ -29,6 +29,10 @@
         <td><%= link_to 'Destroy', transaction, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+      <tr>
+        <td colspan="6"></td>
+        <td ><strong><%=@total_sum %></strong></td>
+      </tr>
   </tbody>
 </table>
 
