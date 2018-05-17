@@ -63,6 +63,29 @@ class TransactionsController < ApplicationController
 
   # POST /transactions/import
   def import
+    if params[:file].present?
+      file = params[:file].read.force_encoding("UTF-8").split("\n")
+      file.shift
+
+      file.each do |line|
+        data = line.split("\t")
+        provider = Provider.where(address: data[4]).find_or_create_by(name: data[5])
+        if provider.persisted?
+          t = Transaction.create!  do |t|
+            t.buyer        = data[0]
+            t.description  = data[1]
+            t.value        = data[2]
+            t.quantity     = data[3]
+            t.provider     = provider
+          end
+        end
+      end
+
+      respond_to do |format|
+        format.html { redirect_to transactions_url, notice: 'Transactions successfully imported.' }
+        format.json { head :accepted }
+      end
+    end
   end
 
   private
@@ -72,7 +95,7 @@ class TransactionsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def transaction_params
+    def transaction_param
       params.require(:transaction).permit(:value, :description, :quantity, :buyer, :venue, :address)
     end
 end
