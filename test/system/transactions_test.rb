@@ -17,7 +17,7 @@ class TransactionsTest < ApplicationSystemTestCase
     fill_in "Buyer", with: @transaction.buyer
     fill_in "Description", with: @transaction.description
     fill_in "Quantity", with: @transaction.quantity
-    fill_in "Unit_Price", with: @transaction.unit_price
+    fill_in "Unit price", with: @transaction.unit_price
     select "Provider1"
     click_on "Create Transaction"
 
@@ -32,7 +32,7 @@ class TransactionsTest < ApplicationSystemTestCase
     fill_in "Buyer", with: @transaction.buyer
     fill_in "Description", with: @transaction.description
     fill_in "Quantity", with: @transaction.quantity
-    fill_in "Unit_Price", with: @transaction.unit_price
+    fill_in "Unit price", with: @transaction.unit_price
     select "Provider2"
     click_on "Update Transaction"
 
