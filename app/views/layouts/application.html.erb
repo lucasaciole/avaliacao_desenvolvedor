@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>AvaliacaoDesenvolvedor</title>
+    <title>Transactions Manager v0.1</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="main" class="container">
+      <div class="row">
+        <div id="content" class="col-xs-9">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
