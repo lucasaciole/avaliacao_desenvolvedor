@@ -22,8 +22,8 @@
         <td><%= transaction.description %></td>
         <td><%= transaction.quantity %></td>
         <td><%= transaction.buyer %></td>
-        <td><%= transaction.venue %></td>
-        <td><%= transaction.address %></td>
+        <td><%= transaction.provider.name %></td>
+        <td><%= transaction.provider.address %></td>
         <td><%= link_to 'Show', transaction %></td>
         <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
         <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -34,26 +34,30 @@
 
 <br>
 
-<%= link_to 'New Transaction', new_transaction_path, :class => "btn btn-primary" %>
-<%= link_to 'Import Transactions', import_transactions_path, :class => "btn btn-default" %>
+<%= link_to 'New Transaction', new_transaction_path, class: "btn btn-primary" %>
+<%= link_to 'Import Transactions', '#', class: "btn btn-default", 
+  data: { toggle: "modal", target: "#importModal" } %>
 
 <!-- Modal -->
 <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-labelledby="importModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="importModalLabel">Import Transactions</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      <%= form_tag({action: :import}, multipart: true) do %>
+        <div class="modal-header">
+          <h2 class="modal-title" id="importModalLabel">Import Transactions</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Select a file contaning all transactions to be imported:</p>
+            <%= file_field_tag 'file' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= submit_tag 'Send', class: "btn btn-primary" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
