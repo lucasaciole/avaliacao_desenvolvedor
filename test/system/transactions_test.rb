@@ -14,12 +14,11 @@ class TransactionsTest < ApplicationSystemTestCase
     visit transactions_url
     click_on "New Transaction"
 
-    fill_in "Address", with: @transaction.address
     fill_in "Buyer", with: @transaction.buyer
     fill_in "Description", with: @transaction.description
+    fill_in "Provider", with: @transaction.provider_id
     fill_in "Quantity", with: @transaction.quantity
-    fill_in "Value", with: @transaction.value
-    fill_in "Venue", with: @transaction.venue
+    fill_in "Unit Price", with: @transaction.unit_price
     click_on "Create Transaction"
 
     assert_text "Transaction was successfully created"
@@ -30,12 +29,11 @@ class TransactionsTest < ApplicationSystemTestCase
     visit transactions_url
     click_on "Edit", match: :first
 
-    fill_in "Address", with: @transaction.address
     fill_in "Buyer", with: @transaction.buyer
     fill_in "Description", with: @transaction.description
+    fill_in "Provider", with: @transaction.provider_id
     fill_in "Quantity", with: @transaction.quantity
-    fill_in "Value", with: @transaction.value
-    fill_in "Venue", with: @transaction.venue
+    fill_in "Unit Price", with: @transaction.unit_price
     click_on "Update Transaction"
 
     assert_text "Transaction was successfully updated"

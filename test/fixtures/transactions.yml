@@ -1,17 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  value: 1.5
   description: MyString
-  quantity: 1
   buyer: MyString
-  venue: MyString
-  address: MyString
+  unit_price: 1.5
+  quantity: 1
+  provider: one
 
 two:
-  value: 1.5
   description: MyString
-  quantity: 1
   buyer: MyString
-  venue: MyString
-  address: MyString
+  unit_price: 1.5
+  quantity: 1
+  provider: two
