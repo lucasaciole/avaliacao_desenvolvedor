@@ -11,32 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :buyer %>
-    <%= form.text_field :buyer %>
+    <%= form.text_field :buyer, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :unit_price %>
-    <%= form.number_field :unit_price %>
+    <%= form.number_field :unit_price, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :quantity %>
-    <%= form.number_field :quantity, min: 1%>
+    <%= form.number_field :quantity, min: 1, class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="field form-group">
     <%= form.label :provider %>
-    <%= select :transaction, :provider_id, options_from_collection_for_select(Provider.all,:id,:name) %>
+    <%= select :transaction, :provider_id, options_from_collection_for_select(Provider.all,:id,:name), {}, {class: "form-control"} %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to 'Back', transactions_path, class: "btn btn-link" %>
   </div>
 <% end %>
